@@ -1,8 +1,9 @@
 from logo import logo
 
-board = [[1, 2, 3],
-         [4, 5, 6],
-         [7, 8, 9]]
+
+board = [[" ", " ", " "],
+         [" ", " ", " "],
+         [" ", " ", " "]]
 
 print(f"{logo}\n Welcome to my tic tac toe game(X/O).")
 
@@ -22,9 +23,9 @@ turn_counter = 0
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
-def edit_board(choice, turn):
+def edit_board(pick, turn):
     for i in range(1, 10):
-        if choice == i:
+        if pick == i:
             if i <= 3:
                 board[0][i - 1] = turn
             elif i <= 6:
@@ -37,37 +38,41 @@ def edit_board(choice, turn):
                 num += 1
 
 
-def play_game():
+def switch_player(player):
     global turn_counter
 
+    try:
+        choice = int(input("\nSelect a number from (1 - 9): "))
+    except ValueError:
+        print("\nEnter only numeric number".upper())
+    else:
+        if 1 <= choice <= 9:
+            if choice in numbers:
+                edit_board(choice, player)
+                numbers.remove(choice)
+                turn_counter += 1
+            else:
+                print("\nSpot already chosen".upper())
+        else:
+            print("\nEnter a valid number from (1 - 9)".upper())
+
+
+def play_game():
+
+    global turn_counter
     while game_on:
         # Turn switcher
         if turn_counter % 2 == 0:
-            show_board()
             turn = "X"
-            choice = int(input(f"{turn} turn.\nSelect a number from 1 - 9: "))
-            if choice >= 1 or choice <= 9:
-                if choice in numbers:
-                    edit_board(choice, turn)
-                    numbers.remove(choice)
-                    turn_counter += 1
-                else:
-                    print("Spot already chosen")
-            else:
-                print("Enter a valid number")
-        else:
+            print(f"\n\n{turn} turn.")
             show_board()
+            switch_player(turn)
+
+        else:
             turn = "O"
-            choice = int(input(f"{turn} turn.\nSelect a number from 1 - 9: "))
-            if choice >= 1 or choice <= 9:
-                if choice in numbers:
-                    edit_board(choice, turn)
-                    numbers.remove(choice)
-                    turn_counter += 1
-                else:
-                    print("Spot already chosen")
-            else:
-                print("Enter a valid number")
+            print(f"\n\n{turn} turn.")
+            show_board()
+            switch_player(turn)
 
 
 play_game()
