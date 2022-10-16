@@ -16,12 +16,6 @@ def show_board():
     print("\n+---+---+---+")
 
 
-winner = None
-game_on = True
-turn_counter = 0
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-
 def edit_board(pick, turn):
     for i in range(1, 10):
         if pick == i:
@@ -35,6 +29,12 @@ def edit_board(pick, turn):
                 num = 7
                 board[2][i - num] = turn
                 num += 1
+
+
+winner = None
+game_on = True
+turn_counter = 0
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
 def turn_handler(player):
