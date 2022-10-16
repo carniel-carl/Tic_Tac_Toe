@@ -24,11 +24,9 @@ def edit_board(pick, turn):
             elif i <= 6:
                 num = 4
                 board[1][i - num] = turn
-                num += 1
             else:
                 num = 7
                 board[2][i - num] = turn
-                num += 1
 
 
 winner = None
