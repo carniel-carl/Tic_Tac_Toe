@@ -1,6 +1,5 @@
 from logo import logo
 
-
 board = [[" ", " ", " "],
          [" ", " ", " "],
          [" ", " ", " "]]
@@ -57,8 +56,11 @@ def turn_handler(player):
             print("\nEnter a valid number from (1 - 9)".upper())
 
 
-def play_game():
+def check_win():
+    pass
 
+
+def play_game():
     global turn_counter
     while game_on:
         # Turn switcher
