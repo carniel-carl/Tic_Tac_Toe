@@ -19,14 +19,14 @@ def show_board():
 def edit_board(pick, turn):
     for i in range(1, 10):
         if pick == i:
-            if i <= 3:
-                board[0][i - 1] = turn
-            elif i <= 6:
+            if pick <= 3:
+                board[0][pick - 1] = turn
+            elif pick <= 6:
                 num = 4
-                board[1][i - num] = turn
+                board[1][pick - num] = turn
             else:
                 num = 7
-                board[2][i - num] = turn
+                board[2][pick - num] = turn
 
 
 winner = None
@@ -49,7 +49,7 @@ def turn_handler(player):
                 numbers.remove(choice)
                 turn_counter += 1
             else:
-                print("\nSpot already chosen".upper())
+                print("\nSpot already taken".upper())
         else:
             print("\nEnter a valid number from (1 - 9)".upper())
 
