@@ -38,7 +38,7 @@ def edit_board(pick, turn):
                 num += 1
 
 
-def switch_player(player):
+def turn_handler(player):
     global turn_counter
 
     try:
@@ -66,13 +66,13 @@ def play_game():
             turn = "X"
             print(f"\n\n{turn} turn.")
             show_board()
-            switch_player(turn)
+            turn_handler(turn)
 
         else:
             turn = "O"
             print(f"\n\n{turn} turn.")
             show_board()
-            switch_player(turn)
+            turn_handler(turn)
 
 
 play_game()
